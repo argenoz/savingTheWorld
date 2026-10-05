@@ -1,0 +1,81 @@
+<html>
+	<head>
+	<meta charset="utf-8"/>
+	<script>
+		function better_jump_(e)
+			{
+			let qwe = document.createElement('a');
+			//console.log(e);
+			//return;
+			qwe.href = e;
+			qwe.click();
+			}
+		function just_be_ready()
+			{
+			
+			document.getElementById('js').parentElement.addEventListener('click',()=>{better_jump_('trenazher.html');});
+			}
+	</script>
+	<style>
+		body
+			{
+			background-color:#4682B4;
+			
+			}
+		body *
+			{
+			position:relative;
+			user-select:none;
+			}
+		body>div
+			{
+			width:90vw;
+			height:90vh;
+			margin: auto auto auto auto;
+			display:flex;
+			justify-content: center;
+			align-items: center;
+			}
+		body>div>div
+			{
+			margin: auto auto auto auto;
+			display:flex;
+			flex-direction:row;
+			}
+		body>div>div>div
+			{
+			margin: 10px;
+			height:100px;
+			width:100px;
+			border-radius:10px;
+			background-color:#00FFFF;
+			border-style:solid;
+			border-width:3px;
+			}
+		body>div>div>div>div
+			{
+			margin: auto 10px;
+			}
+		body>div>div>div:hover
+			{
+			background-color:#FA8072;
+			}
+	</style>
+	</head>
+	<body onload="just_be_ready()">
+		<div>
+			<div>
+				<div>
+						<div id="js">
+							для js
+						</div>
+				</div>
+				<div>
+						<div id="html">
+							для html
+						</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
