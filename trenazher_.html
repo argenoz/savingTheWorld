@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<style>
+			#main_window
+				{
+				position:relative;
+				height:190vh;
+				width:95vw;
+				display:flex;
+				flex-direction:column;
+				}
+			#main_window *
+				{
+				position:relative;
+				}
+			#editor
+				{
+				height:50%;
+				width:100%;
+				display:grid;
+				grid-template-rows: calc( 100% - 100px ) 100px;
+				grid-template-cols: 100%;
+				}
+				
+			#inputer
+				{
+				height:95%;
+				width:95%;
+				resize:none;
+				margin-left:auto;
+				margin-right:auto;
+				outline:none;
+				}
+			#just_do_it
+				{
+				background-color:#4E32FF;
+				height:100%;
+				width:400px;
+				border-radius:10px;
+				margin-left:auto;
+				margin-right:auto;
+				user-select:none;
+				}
+			#just_do_it:hover
+				{
+				background-color:#FF3030;
+				}
+			#just_do_it > div
+				{
+				width:70%;
+				height:70%;
+				margin-left:auto;
+				margin-right:auto;
+				margin-top:auto;
+				margin-bottom:auto;
+				}
+				
+		</style>
+		<script>
+		let lala=null;
+			function obertka(e)
+					{
+					return '\<html\>\<head\>\<meta charset=\"utf-8\"/\>\<head\>\<body\>'+e+"\<body\>";
+					}
+			function just_generate(e)
+					{
+					e.stopPropagation();
+					if(lala==null)
+						{
+						lala = document.createElement('iframe');
+						let qwe = document.getElementById('inputer').value;
+						qwe = obertka(qwe);
+						qwe = [lala,qwe,new Blob([qwe],{type:'text/html'})];
+						qwe.push(URL.createObjectURL(qwe[2n]));
+						lala = qwe;
+						
+						lala[0n].src = qwe[3n];
+						document.getElementById('main_window').appendChild(qwe=lala[0n]);
+						qwe.setAttribute('style','height:50%;width:90%;');
+						}
+					else
+						{
+						let qwe = document.getElementById('inputer').value;
+						qwe = obertka(qwe);
+						qwe = [qwe,new Blob([qwe],{type:'text/html'})];
+						qwe.push(URL.createObjectURL(qwe[1n]));
+						URL.revokeObjectURL(lala[3n]);
+						lala = [lala[0n],qwe[0n],qwe[1n],qwe[2n]];
+						lala[0n].src = lala[3n];
+						}
+					}
+		</script>
+	</head>
+	<body onload="(()=>{document.getElementById('inputer').value=''; document.getElementById('just_do_it').addEventListener('click',(e)=>{just_generate(e);}); })()">
+		<div id="main_window">
+			<div id="editor">
+				<textarea id="inputer">
+				</textarea>
+				<div id="just_do_it" >
+					<div>Для того, чтобы html-код запустился</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
